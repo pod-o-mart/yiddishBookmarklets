@@ -4,7 +4,7 @@ Bookmarklets for Yiddish dictionaries, keyboard input and transliteration
 - Transliteration functions for Yiddish
 - Virtual keyboard for Hebrew script
 
-[DEMO](https://pod-o-mart.github.io/yiddishBookmarklets/)
+[Get the ready-to-use bookmarklets here](https://pod-o-mart.github.io/yiddishBookmarklets/)
 
 Credits
 -------
