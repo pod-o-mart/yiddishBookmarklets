@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="favelet, bookmarklet, virtual keyboard, transliteration, transcription, Yiddish" />
+	<meta name="description" content="The Yiddish bookmarklet contains a selection of Yiddish online dictionaries, a virtual Hebrew keyboard and a transliteration function for Yiddish web sites." />
+	<meta name="author" content="Martin Podolak" />
+	<title>Bookmarklet for Yiddish dictionaries, keyboard input and transliteration</title>
+</head>
+<body>
 <div style="font-family:sans-serif;">
 <h1>Bookmarklet for Yiddish dictionaries, keyboard input and transliteration</h1>
   <div style="float:right;margin:5px;border:2px solid black;max-width:33%;">
@@ -35,3 +45,5 @@
 <p style="text-align: justify;"><a href="javascript:var%20t=window.getSelection?window.getSelection():document.getSelection?document.getSelection():(document.selection&&document.selection.createRange)?document.selection.createRange().text:'';if(t!='');(function(d){var%20s=d.createElement('script');s.type='text/javascript';s.charset='utf-8';s.async=true;s.src='https://pod-o-mart.github.io/yiddishBookmarklets/yiddish.js';d.body.appendChild(s);}(document));">This weblink</a> calls <a href="https://pod-o-mart.github.io/yiddishBookmarklets/yiddish.js">this JavaScript file</a> and applies it to the current web site. Furthermore the script calls the files <span style="font-family:monospace;display:inline;">keyboard-yi.js</span>, <span style="font-family:monospace;display:inline;">keyboard.css</span>, <span style="font-family:monospace;display:inline;">style.css</span> and <span style="font-family:monospace;display:inline;">bigger.css</span> from <a href="https://pod-o-mart.github.io/yiddishBookmarklets/"> the same directory</a>. Consequently, the bookmarklet will only work with an established internet connection.</p>
 <p style="text-align: justify;">The bookmarklet may be downloaded from <a target="_blank" href="https://github.com/pod-o-mart/yiddishBookmarklets">GitHub</a>.</p><br />
 </div>
+</body>
+</html>
