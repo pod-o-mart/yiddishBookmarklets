@@ -352,4 +352,9 @@ color:white;
 
 #ordbogklein a:hover {
 text-decoration: underline;
+cursor:nw-resize;
+}
+
+span.minimer {
+cursor:se-resize!important;
 }

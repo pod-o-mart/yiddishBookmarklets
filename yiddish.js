@@ -7,9 +7,9 @@
 // V 1.5   - 2018-05-18: Added "Der Groyser Verterbukh", Yiddish-English glosser, spellcheck (all by Refoyl http://www.cs.uky.edu/~raphael/); Yiddish-Russian dictionary (academic.ru 25,000 headwords); JNW Yiddish-Dutch dictionary (jiddisjwoordenboek.nl 190,000 headwords)
 // V 1.5.1 - 2018-06-07: LTR adjustments in website conversion; bugfixes
 // V 1.6   - 2018-12-29: Added Yiddish-English dictionary (academic.ru 6,500 headwords)
-// Read more: https://podolak.net/en/bookmarklets/yiddish
+// V 1.7   - 2021-10-14: Moved bigger.css into yiddish.js
+// Read more: https://pod-o-mart.github.io/yiddishBookmarklets
 // Author: Martin Podolak
-// Contact: www.podolak.net
 // Yiddish charmap partly adopted from http://www.lexilogos.com/clavier/conyi.js
 // This work is licensed under the GNU General Public License v3.0
 
@@ -66,7 +66,10 @@ inddata.setAttribute("onclick", "this.parentNode.submit();");
 inddata.setAttribute("onkeypress", "inputenter(event)");
 function inputenter(event) {
 if (event.keyCode == 13) {
-	loadjscssfile(ordbogurl+"bigger.css", "css");
+	inddata.setAttribute("style", "height:140px !important;width:30% !important;");
+	texto2.setAttribute("style", "height:140px !important;width:80% !important;");
+	texto3.setAttribute("style", "height:140px !important;width:80% !important;");
+	button1.setAttribute("style", "display:none !important;");
 	var element = document.getElementById('texto3'),
 	style = window.getComputedStyle(element),
 	height = style.getPropertyValue('height');
@@ -78,7 +81,10 @@ if (event.keyCode == 13) {
 
 var f = t.toString();
  if (f.indexOf('\n') >= 0) {
-	loadjscssfile(ordbogurl+"bigger.css", "css");
+	inddata.setAttribute("style", "height:140px !important;width:30% !important;");
+	texto2.setAttribute("style", "height:140px !important;width:80% !important;");
+	texto3.setAttribute("style", "height:140px !important;width:80% !important;");
+	button1.setAttribute("style", "display:none !important;");
 	}
 
 inddata.id="texto3";
@@ -648,7 +654,10 @@ var umbruch4 = document.createElement('br');
 var umbruch5 = document.createElement('br');
 
 function bigger2() {
-	loadjscssfile(ordbogurl+"bigger.css", "css");
+	inddata.setAttribute("style", "height:140px !important;width:30% !important;");
+	texto2.setAttribute("style", "height:140px !important;width:80% !important;");
+	texto3.setAttribute("style", "height:140px !important;width:80% !important;");
+	button1.setAttribute("style", "display:none !important;");
 	button1.style.display = "none";
 	}
 
@@ -828,11 +837,17 @@ div.style.display = 'block';
 div.style.display = 'none';
 
  if (inddata.value.indexOf('\n') >= 0) {
-	loadjscssfile(ordbogurl+"bigger.css", "css");
+	inddata.setAttribute("style", "height:140px !important;width:30% !important;");
+	texto2.setAttribute("style", "height:140px !important;width:80% !important;");
+	texto3.setAttribute("style", "height:140px !important;width:80% !important;");
+	button1.setAttribute("style", "display:none !important;");
 	}
 	
  if (uddata.value.indexOf('\n') >= 0) {
-	loadjscssfile(ordbogurl+"bigger.css", "css");
+	inddata.setAttribute("style", "height:140px !important;width:30% !important;");
+	texto2.setAttribute("style", "height:140px !important;width:80% !important;");
+	texto3.setAttribute("style", "height:140px !important;width:80% !important;");
+	button1.setAttribute("style", "display:none !important;");
 	}
 }
 
