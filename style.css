@@ -220,6 +220,10 @@ min-height: 0;
 transition: none;
 }
 
+#inputordbog {
+height:auto!important;
+}
+
 #inputordbog:hover {
 background-color:white;
 }
@@ -238,7 +242,10 @@ position:relattve;
 background-color:white;
 cursor:text;
 height:32px;
+min-height:32px;
+max-height:32px;
 width:80%;
+padding:3px;
 }
 
 #texto {
@@ -253,9 +260,54 @@ width:30%;
 margin-left:0;
 }
 
+#texto3 {
+margin:0;
+}
+
 .oben {
 display:block;
 margin-bottom:5px;
+}
+
+#tabelle {
+justify-content: center;
+display: grid;
+margin-bottom:0!important;
+margin-bottom: -10px !important;
+}
+
+#tabelletr2 {
+display: inline-flex;
+justify-content: center;
+}
+
+#tabelle,
+#tabelletr {
+border:0;
+background-color: transparent;
+}
+
+#tabelletr {
+border:0;
+background-color: transparent;
+display: inline-flex;
+}
+
+#tabelletr > td {
+text-align: right;
+display: inline-flex;
+justify-content: flex-end;
+}
+
+#tabelletr > td > img {
+order: 3;
+height: 13px;
+width: 28px;
+}
+
+#tabelle th,
+#tabelle td {
+background-color: transparent;
 }
 
 .spantitle {
@@ -292,13 +344,13 @@ text-decoration-color:lightgrey!important;
 }
 
 p.lupe {
-margin:0;
+margin:4px 0 0 0;
 padding:0;
 border:0;
 float:left;
 position:relative;
 bottom:0;
-font-size:24px;
+font-size:28px!important;
 color:white;
 max-height: 1px;
 }
@@ -314,14 +366,15 @@ padding-left:20px;
 .spansubtitle {
 padding-left:20px;
 color:lightgrey;
-font: normal normal bold 10px verdana, sans-serif !important;
+font: normal normal bold 14px verdana, sans-serif !important;
 display:inline;
 text-shadow: 3px 2px 10px black;
 }
 
 .dictsubtitle {
 margin-top:7px;
-margin-bottom:7px;
+margin-bottom:0;
+padding-bottom:0;
 color:lightgrey;
 font: normal normal bold 10px verdana, sans-serif !important;
 //display:block;

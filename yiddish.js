@@ -69,9 +69,9 @@ inddata.setAttribute("onclick", "this.parentNode.submit();");
 inddata.setAttribute("onkeypress", "inputenter(event)");
 function inputenter(event) {
 if (event.keyCode == 13) {
-	inddata.setAttribute("style", "height:140px !important;width:30% !important;");
-	texto2.setAttribute("style", "height:140px !important;width:80% !important;");
-	texto3.setAttribute("style", "height:140px !important;width:80% !important;");
+	inddata.setAttribute("style", "height:140px !important;width:30% !important;min-height:140px!important;max-height:140px!important;");
+	texto2.setAttribute("style", "height:140px !important;width:80% !important;min-height:140px!important;max-height:140px!important;");
+	texto3.setAttribute("style", "height:140px !important;width:80% !important;min-height:140px!important;max-height:140px!important;");
 	button1.setAttribute("style", "display:none !important;");
 	var element = document.getElementById('texto3'),
 	style = window.getComputedStyle(element),
@@ -79,8 +79,24 @@ if (event.keyCode == 13) {
 	if (height == "26px") {
 		self.VKI_close();
 		}
- }
+	}
 }
+
+function inputwrap(event) {
+if (event.keyCode == 13) {
+	inddata.setAttribute("style", "height:140px !important;width:30% !important;min-height:140px!important;max-height:140px!important;");
+	texto2.setAttribute("style", "height:140px !important;width:80% !important;min-height:140px!important;max-height:140px!important;");
+	texto3.setAttribute("style", "height:140px !important;width:80% !important;min-height:140px!important;max-height:140px!important;");
+	button1.setAttribute("style", "display:none !important;");
+	var element = document.getElementById('texto3'),
+	style = window.getComputedStyle(element),
+	height = style.getPropertyValue('height');
+	if (height == "26px") {
+		self.VKI_close();
+		}
+	}
+}
+
 
 var f = t.toString();
  if (f.indexOf('\n') >= 0) {
@@ -657,9 +673,9 @@ var umbruch4 = document.createElement('br');
 var umbruch5 = document.createElement('br');
 
 function bigger2() {
-	inddata.setAttribute("style", "height:140px !important;width:30% !important;");
-	texto2.setAttribute("style", "height:140px !important;width:80% !important;");
-	texto3.setAttribute("style", "height:140px !important;width:80% !important;");
+	inddata.setAttribute("style", "height:140px !important;width:30% !important;min-height:140px!important;max-height:140px!important;");
+	texto2.setAttribute("style", "height:140px !important;width:80% !important;min-height:140px!important;max-height:140px!important;");
+	texto3.setAttribute("style", "height:140px !important;width:80% !important;min-height:140px!important;max-height:140px!important;");
 	button1.setAttribute("style", "display:none !important;");
 	button1.style.display = "none";
 	}
