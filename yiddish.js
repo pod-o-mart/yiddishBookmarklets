@@ -8,10 +8,13 @@
 // V 1.5.1 - 2018-06-07: LTR adjustments in website conversion; bugfixes
 // V 1.6   - 2018-12-29: Added Yiddish-English dictionary (academic.ru 6,500 headwords)
 // V 1.7   - 2021-10-14: Moved bigger.css into yiddish.js
+// V 1.8   - 2022-01-01: Stylesheet improvements; version indicator added
 // Read more: https://pod-o-mart.github.io/yiddishBookmarklets
 // Author: Martin Podolak
 // Yiddish charmap partly adopted from http://www.lexilogos.com/clavier/conyi.js
 // This work is licensed under the GNU General Public License v3.0
+
+var version = "1.8 - 2022-01-01";
 
 if(!document.getElementById("ordbogform"))
 {
@@ -748,6 +751,11 @@ linktitle.title = "Get more information about this and other dictionary bookmark
 linktitle.href = "https://pod-o-mart.github.io/yiddishBookmarklets";
 linktitle.target = "_blank";
 ordbogform.appendChild(linktitle);
+
+var versionindicator = document.createElement('div');
+versionindicator.innerHTML = "<div style='padding: 0;color: grey;font: normal normal bold 10px verdana, sans-serif !important;float: left;white-space: nowrap;margin-top: 15px;'>Version " + version + "</div>";
+ordbogform.appendChild(versionindicator);
+
 var divaussen = document.createElement('div');
 divaussen.setAttribute("id", "ordbog");
 divaussen.appendChild(divinnen);
