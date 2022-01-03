@@ -14,7 +14,7 @@
 // Yiddish charmap partly adopted from http://www.lexilogos.com/clavier/conyi.js
 // This work is licensed under the GNU General Public License v3.0
 
-var version = "1.8 - 2022-01-01";
+var version = "1.8.1 - 2022-01-03";
 
 if(!document.getElementById("ordbogform"))
 {
@@ -22,40 +22,44 @@ if(!document.getElementById("ordbogform"))
 sc = document.getElementsByTagName("script");
 for(idx = 0; idx < sc.length; idx++)
 {
- s = sc.item(idx);
- if(s.src && s.src.match(/yiddish\.js$/))
- {
-	var ordbogurl =s.src;
-	ordbogurl = ordbogurl.replace("yiddish.js", "");
+	s = sc.item(idx);
+	if(s.src && s.src.match(/yiddish\.js$/))
+	{
+		var ordbogurl =s.src;
+		ordbogurl = ordbogurl.replace("yiddish.js", "");
 	}
 }
 
 function loadjscssfile(filename, filetype){
- if (filetype=="js"){
- var fileref=document.createElement('script')
- fileref.setAttribute("type","text/javascript")
- fileref.setAttribute("src", filename)
- }
- else if (filetype=="css"){
- var fileref=document.createElement("link")
- fileref.setAttribute("rel", "stylesheet")
- fileref.setAttribute("type", "text/css")
- fileref.setAttribute("href", filename)
- }
- if (typeof fileref!="undefined")
- document.getElementsByTagName("head")[0].appendChild(fileref)
+	if (filetype=="js"){
+		var fileref=document.createElement('script')
+	fileref.setAttribute("type","text/javascript")
+	fileref.setAttribute("src", filename)
+	}
+	else if (filetype=="css"){
+		var fileref=document.createElement("link")
+		fileref.setAttribute("rel", "stylesheet")
+		fileref.setAttribute("type", "text/css")
+		fileref.setAttribute("href", filename)
+	}
+	if (typeof fileref!="undefined"){
+		document.getElementsByTagName("head")[0].appendChild(fileref)
+	}
 }
+
 loadjscssfile(ordbogurl+"style.css", "css")
 
 // function for pages with charset UTF-8
 function suche (id){
-konvertiert = encodeURI(document.ordbogform.texto3.value);
-window.open(id+ konvertiert,'_blank');}
+	konvertiert = encodeURI(document.ordbogform.texto3.value);
+	window.open(id+ konvertiert,'_blank');}
 
 // function for pages with charset windows-1252 or ISO-8859-1
 function suche4 (id){
-konvertiert4 = escape(document.ordbogform.texto3.value);
-window.open(id+ konvertiert4,'_blank');}
+	konvertiert4 = escape(document.ordbogform.texto3.value);
+	window.open(id+ konvertiert4,'_blank');
+}
+
 var ordbogform = document.createElement('form');
 ordbogform.id ="ordbogform";
 ordbogform.name="ordbogform";
@@ -67,6 +71,31 @@ inddata.setAttribute("class", "keyboardInput");
 inddata.value =t;
 inddata.setAttribute("onclick", "this.parentNode.submit();");
 inddata.setAttribute("onkeypress", "inputenter(event)");
+inddata.setAttribute("oninput", "inputwrap()");
+inddata.setAttribute("onmousedown", "inputwrap()");
+
+var f = t.toString();
+if (f.indexOf('\n') >= 0) {
+	inddata.setAttribute("style", "height:140px !important;width:30% !important;");
+	texto2.setAttribute("style", "height:140px !important;width:80% !important;");
+	texto3.setAttribute("style", "height:140px !important;width:80% !important;");
+	button1.setAttribute("style", "display:none !important;");
+}
+
+inddata.id="texto3";
+s=document.createElement('script');s.id='r6109_vkbsgp';s.type='text/javascript';s.src=ordbogurl+'keyboard-yi.js?,true,false';document.body.appendChild(s);void(null);
+inddata.setAttribute("class", "keyboardInput");
+inddata.value =t;
+inddata.id="texto3";
+inddata.setAttribute("dir", "rtl");
+
+var uddata = document.createElement('textarea');
+uddata.setAttribute("class", "none");
+uddata.id="texto2";
+//s=document.createElement('script');s.id='r6109_vkbsgp';s.type='text/javascript';s.src=ordbogurl+'keyboard-yi.js?,true,false';document.body.appendChild(s);void(null);
+uddata.setAttribute("dir", "ltr")
+uddata.disabled = true;
+
 function inputenter(event) {
 if (event.keyCode == 13) {
 	inddata.setAttribute("style", "height:140px !important;width:30% !important;min-height:140px!important;max-height:140px!important;");
@@ -81,45 +110,24 @@ if (event.keyCode == 13) {
 		}
 	}
 }
-
-function inputwrap(event) {
-if (event.keyCode == 13) {
-	inddata.setAttribute("style", "height:140px !important;width:30% !important;min-height:140px!important;max-height:140px!important;");
-	texto2.setAttribute("style", "height:140px !important;width:80% !important;min-height:140px!important;max-height:140px!important;");
-	texto3.setAttribute("style", "height:140px !important;width:80% !important;min-height:140px!important;max-height:140px!important;");
-	button1.setAttribute("style", "display:none !important;");
-	var element = document.getElementById('texto3'),
-	style = window.getComputedStyle(element),
-	height = style.getPropertyValue('height');
-	if (height == "26px") {
-		self.VKI_close();
+	
+function inputwrap() {
+	var searchText = document.getElementById("texto3").value;
+	var inputLength = searchText.length;
+	//alert(inputLength);
+	 if (inputLength > 16) {
+		inddata.setAttribute("style", "height:140px !important;width:30% !important;min-height:140px!important;max-height:140px!important;");
+		texto2.setAttribute("style", "height:140px !important;width:80% !important;min-height:140px!important;max-height:140px!important;");
+		texto3.setAttribute("style", "height:140px !important;width:80% !important;min-height:140px!important;max-height:140px!important;");
+		button1.setAttribute("style", "display:none !important;");
+		var element = document.getElementById('texto3'),
+		style = window.getComputedStyle(element),
+		height = style.getPropertyValue('height');
+		if (height == "26px") {
+			self.VKI_close();
 		}
-	}
+	} 
 }
-
-
-var f = t.toString();
- if (f.indexOf('\n') >= 0) {
-	inddata.setAttribute("style", "height:140px !important;width:30% !important;");
-	texto2.setAttribute("style", "height:140px !important;width:80% !important;");
-	texto3.setAttribute("style", "height:140px !important;width:80% !important;");
-	button1.setAttribute("style", "display:none !important;");
-	}
-
-inddata.id="texto3";
-s=document.createElement('script');s.id='r6109_vkbsgp';s.type='text/javascript';s.src=ordbogurl+'keyboard-yi.js?,true,false';document.body.appendChild(s);void(null);
-inddata.setAttribute("class", "keyboardInput");
-inddata.value =t;
-inddata.id="texto3";
-inddata.setAttribute("dir", "rtl");
-
-
-var uddata = document.createElement('textarea');
-uddata.setAttribute("class", "none");
-uddata.id="texto2";
-//s=document.createElement('script');s.id='r6109_vkbsgp';s.type='text/javascript';s.src=ordbogurl+'keyboard-yi.js?,true,false';document.body.appendChild(s);void(null);
-uddata.setAttribute("dir", "ltr")
-uddata.disabled = true;
 
 //	#1: The URLs. Be aware of the ascending numbering and do not forget to call them below at #2
 var input1 = document.createElement("input");
@@ -453,7 +461,6 @@ div.style.display = 'none';
 div.style.display = 'block';
 }
 
-
 function transl2() {
 //var transl2str = t.toString();
 var transl2str = document.ordbogform.texto3.value;
@@ -678,48 +685,48 @@ function bigger2() {
 	texto3.setAttribute("style", "height:140px !important;width:80% !important;min-height:140px!important;max-height:140px!important;");
 	button1.setAttribute("style", "display:none !important;");
 	button1.style.display = "none";
-	}
+}
 
 //	#2: Call here the URLs which have been declared above.
 
- var tabelle = document.createElement("TABLE");
-    tabelle.setAttribute("id", "tabelle");
-    tabelle.style.width = "100%";
-    document.body.appendChild(tabelle);
+var tabelle = document.createElement("TABLE");
+tabelle.setAttribute("id", "tabelle");
+tabelle.style.width = "100%";
+document.body.appendChild(tabelle);
 
-    var tabelletr2 = document.createElement("TR");
-    tabelletr2.setAttribute("id", "tabelletr2");
-    document.getElementById("tabelle").appendChild(tabelletr2);
+var tabelletr2 = document.createElement("TR");
+tabelletr2.setAttribute("id", "tabelletr2");
+document.getElementById("tabelle").appendChild(tabelletr2);
 
-    var tdtopleft = document.createElement("TH");
-	var tdtopleft_inhalt = document.createTextNode('Yiddish search word');
-	tdtopleft.setAttribute("class", "dictsubtitle");
-    tdtopleft.style.textAlign = "right";
-    tdtopleft.style.paddingRight = "30px";
-	tdtopleft.appendChild(tdtopleft_inhalt);
-    document.getElementById("tabelletr2").appendChild(tdtopleft);
+var tdtopleft = document.createElement("TH");
+var tdtopleft_inhalt = document.createTextNode('Yiddish search word');
+tdtopleft.setAttribute("class", "dictsubtitle");
+tdtopleft.style.textAlign = "right";
+tdtopleft.style.paddingRight = "30px";
+tdtopleft.appendChild(tdtopleft_inhalt);
+document.getElementById("tabelletr2").appendChild(tdtopleft);
 
-    var tdtopright = document.createElement("TH");
-	var tdtopright_inhalt = document.createTextNode('YIVO-transliteration');
-	tdtopright.setAttribute("class", "dictsubtitle");
-	tdtopright.appendChild(tdtopright_inhalt);
-    document.getElementById("tabelletr2").appendChild(tdtopright);
+var tdtopright = document.createElement("TH");
+var tdtopright_inhalt = document.createTextNode('YIVO-transliteration');
+tdtopright.setAttribute("class", "dictsubtitle");
+tdtopright.appendChild(tdtopright_inhalt);
+document.getElementById("tabelletr2").appendChild(tdtopright);
 
 ///////////////////////////////////////////////
 
-    var tabelletr = document.createElement("TR");
-    tabelletr.setAttribute("id", "tabelletr");
-    document.getElementById("tabelle").appendChild(tabelletr);
+var tabelletr = document.createElement("TR");
+tabelletr.setAttribute("id", "tabelletr");
+document.getElementById("tabelle").appendChild(tabelletr);
 
-    var tdyi = document.createElement("TD");
-    tdyi.appendChild(lupe);
-    tdyi.appendChild(inddata);
-    tdyi.style.textAlign = "right"; 
-    document.getElementById("tabelletr").appendChild(tdyi);
+var tdyi = document.createElement("TD");
+tdyi.appendChild(lupe);
+tdyi.appendChild(inddata);
+tdyi.style.textAlign = "right"; 
+document.getElementById("tabelletr").appendChild(tdyi);
 
-    var tdlat = document.createElement("TD");
-    tdlat.appendChild(uddata);
-    document.getElementById("tabelletr").appendChild(tdlat);
+var tdlat = document.createElement("TD");
+tdlat.appendChild(uddata);
+document.getElementById("tabelletr").appendChild(tdlat);
 
 ordbogform.appendChild(tabelle);
 ordbogform.appendChild(button1);
@@ -754,9 +761,6 @@ ordbogform.appendChild(input_transl4);
 ordbogform.appendChild(translit_title);
 ordbogform.appendChild(inputtranslit);
 ordbogform.appendChild(inputtranslit3);
-
-
-
 //	#2 END	///////////////////
 
 var linktitle = document.createElement('a');
@@ -786,6 +790,7 @@ divaussenklein.setAttribute("id", "ordbogklein");
 var divaussenkleina = document.createElement('a');
 divaussenkleina.title = "Click to restore dictionaries window";
 divaussenkleina.setAttribute("onmousedown", "display()");
+inddata.setAttribute("onclick", "inputwrap()");
 divaussenklein.appendChild(divaussenkleina);
 var divaussenkleintext = document.createTextNode("YI dicts");
 divaussenkleina.appendChild(divaussenkleintext);
@@ -800,78 +805,71 @@ ordbogspan.onclick = function() {
 
 ordbogkleinspan.onclick = function(event) {
 	if (event.target == ordbogkleinspan) {
-    var div = document.getElementById('ordbog');
-    if (div.style.display !== 'none') {
-div.style.display = 'none';
-	}
+		var div = document.getElementById('ordbog');
+		if (div.style.display !== 'none') {
+			div.style.display = 'none';
+		}
 	    else {
-div.style.display = 'block';
-    }
-    var div = document.getElementById('ordbogklein');
-div.style.display = 'block';
+			div.style.display = 'block';
+		}
+		var div = document.getElementById('ordbogklein');
+		div.style.display = 'block';
 	}
 }
 
 window.onclick = function(event) {
 	if (event.target == ordbog) {
-    var div = document.getElementById('ordbog');
-    if (div.style.display !== 'none') {
-div.style.display = 'none';
-	}
+		var div = document.getElementById('ordbog');
+		if (div.style.display !== 'none') {
+			div.style.display = 'none';
+		}
 	    else {
-div.style.display = 'block';
-    }
-    var div = document.getElementById('ordbogklein');
-div.style.display = 'block';
+			div.style.display = 'block';
+		}
+		var div = document.getElementById('ordbogklein');
+		div.style.display = 'block';
 	}
 }
 transl2();
 }
-
-else
-	{
+else {
 	display();
-	};
+};
 
 function display() {
-	         if (window.getSelection)
-    {
+	if (window.getSelection) {
         inddata.value = window.getSelection();
         transl2();
-             }
-    else if (document.getSelection)
-    {
-        inddata.value = document.getSelection();
-        transl2();
-            }
-    else if (document.selection)
-    {
-        inddata.value = document.selection.createRange().text;
-        transl2();
-            }
-    else return;
-    var div = document.getElementById('ordbog');
-    if (div.style.display !== 'none') {
-div.style.display = 'none';
 	}
-	    else {
-div.style.display = 'block';
-    }
-    var div = document.getElementById('ordbogklein');
-div.style.display = 'none';
+	else if (document.getSelection) {
+		inddata.value = document.getSelection();
+		transl2();
+	}
+    else if (document.selection) {
+		inddata.value = document.selection.createRange().text;
+		transl2();
+	}
+	else return;
+	var div = document.getElementById('ordbog');
+	if (div.style.display !== 'none') {
+		div.style.display = 'none';
+	}
+	else {
+		div.style.display = 'block';
+	}
+	var div = document.getElementById('ordbogklein');
+	div.style.display = 'none';
 
- if (inddata.value.indexOf('\n') >= 0) {
-	inddata.setAttribute("style", "height:140px !important;width:30% !important;");
-	texto2.setAttribute("style", "height:140px !important;width:80% !important;");
-	texto3.setAttribute("style", "height:140px !important;width:80% !important;");
-	button1.setAttribute("style", "display:none !important;");
+	if (inddata.value.indexOf('\n') >= 0) {
+		texto2.setAttribute("style", "height:140px !important;width:80% !important;");
+		texto3.setAttribute("style", "height:140px !important;width:80% !important;");
+		button1.setAttribute("style", "display:none !important;");
 	}
-	
- if (uddata.value.indexOf('\n') >= 0) {
-	inddata.setAttribute("style", "height:140px !important;width:30% !important;");
-	texto2.setAttribute("style", "height:140px !important;width:80% !important;");
-	texto3.setAttribute("style", "height:140px !important;width:80% !important;");
-	button1.setAttribute("style", "display:none !important;");
+	if (uddata.value.indexOf('\n') >= 0) {
+		inddata.setAttribute("style", "height:140px !important;width:30% !important;");
+		texto2.setAttribute("style", "height:140px !important;width:80% !important;");
+		texto3.setAttribute("style", "height:140px !important;width:80% !important;");
+		button1.setAttribute("style", "display:none !important;");
 	}
 }
 
@@ -880,3 +878,4 @@ ordbogform.addEventListener('click', function () {
     dictinput2a.value = inddata.value;
     dictinput3a.value = inddata.value;
 });
+inputwrap();
