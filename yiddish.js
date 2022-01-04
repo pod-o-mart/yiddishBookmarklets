@@ -51,12 +51,18 @@ loadjscssfile(ordbogurl+"style.css", "css")
 
 // function for pages with charset UTF-8
 function suche (id){
-	konvertiert = encodeURI(document.ordbogform.texto3.value);
+	var konvertiert = document.ordbogform.texto3.value;
+	konvertiert = konvertiert.replace("/", "-");
+	konvertiert = konvertiert.replace(/^\s+|\s+$/g, '');
+	konvertiert = encodeURI(konvertiert);
 	window.open(id+ konvertiert,'_blank');}
 
 // function for pages with charset windows-1252 or ISO-8859-1
 function suche4 (id){
-	konvertiert4 = escape(document.ordbogform.texto3.value);
+	var konvertiert4 = document.ordbogform.texto3.value;
+	konvertiert4 = konvertiert.replace("/", "-");
+	konvertiert4 = konvertiert4.replace(/^\s+|\s+$/g, '');
+	konvertiert4 = escape(konvertiert4);
 	window.open(id+ konvertiert4,'_blank');
 }
 
@@ -114,8 +120,7 @@ if (event.keyCode == 13) {
 function inputwrap() {
 	var searchText = document.getElementById("texto3").value;
 	var inputLength = searchText.length;
-	//alert(inputLength);
-	 if (inputLength > 16) {
+	 if (inputLength > 20) {
 		inddata.setAttribute("style", "height:140px !important;width:30% !important;min-height:140px!important;max-height:140px!important;");
 		texto2.setAttribute("style", "height:140px !important;width:80% !important;min-height:140px!important;max-height:140px!important;");
 		texto3.setAttribute("style", "height:140px !important;width:80% !important;min-height:140px!important;max-height:140px!important;");
@@ -632,7 +637,6 @@ spanoben.setAttribute("class", "oben");
 var lupe = document.createElement('p');
 lupe.setAttribute("class", "lupe");
 lupe.setAttribute("title", "Enter keyword and choose a dictionary by clicking the according button");
-lupe.style.transform="rotate(45deg)"
 var lupeinhalt = document.createTextNode('⚲');
 lupe.appendChild(lupeinhalt);
 
