@@ -14,7 +14,7 @@
 // Yiddish charmap partly adopted from http://www.lexilogos.com/clavier/conyi.js
 // This work is licensed under the GNU General Public License v3.0
 
-var version = "1.8.1 - 2022-01-03";
+var version = "1.8.2 - 2022-01-27";
 
 if(!document.getElementById("ordbogform"))
 {
@@ -598,7 +598,7 @@ inputtranslit.onclick = function(){transl();return false;};
 
 var inputtranslit2 = document.createElement("input");
 inputtranslit2.type = "button";
-inputtranslit2.value = "apply transliteration";
+inputtranslit2.value = "apply transliteration / איבערשרײַבן";
 inputtranslit2.id = "inputordbog";
 inputtranslit2.title = "Transliteration (romanisation, transcription) of the input from Hebrew to Latin script";
 inputtranslit2.style.cssFloat = "right";
@@ -642,7 +642,7 @@ lupe.appendChild(lupeinhalt);
 
 var button1 = document.createElement('input');
 button1.type = "button";
-button1.value = "enlarge input fields";
+button1.value = "enlarge input fields / פאַרגרעסערן אַרייַנשרייַב פעלד";
 button1.id = "inputordbog";
 button1.setAttribute("class", "bigger");
 button1.title = "This will enlarge the input field";
@@ -663,17 +663,17 @@ spanoben.appendChild(spansubtitle);
 ordbogform.appendChild(spanoben);
 
 var dict_title = document.createElement('div');
-var dict_title_inhalt = document.createTextNode('Dictionaries');
+var dict_title_inhalt = document.createTextNode('Dictionaries / ווערטערביכער');
 dict_title.setAttribute("class", "dictsubtitle");
 dict_title.appendChild(dict_title_inhalt);
 
 var transl_title = document.createElement('div');
-var transl_title_inhalt = document.createTextNode('Machine translation');
+var transl_title_inhalt = document.createTextNode('Machine translation / מאַשין איבערזעצונג');
 transl_title.setAttribute("class", "dictsubtitle");
 transl_title.appendChild(transl_title_inhalt);
 
 var translit_title = document.createElement('div');
-var translit_title_inhalt = document.createTextNode('Transliteration to Latin script (YIVO-style)');
+var translit_title_inhalt = document.createTextNode('Transliteration to Latin script (YIVO-style) / טראַנסליטערין צו לאַטייַן אלפאבעט (ייִוואָ)');
 translit_title.setAttribute("class", "dictsubtitle");
 translit_title.appendChild(translit_title_inhalt);
 
@@ -703,7 +703,7 @@ tabelletr2.setAttribute("id", "tabelletr2");
 document.getElementById("tabelle").appendChild(tabelletr2);
 
 var tdtopleft = document.createElement("TH");
-var tdtopleft_inhalt = document.createTextNode('Yiddish search word');
+var tdtopleft_inhalt = document.createTextNode('Yiddish search word / זוכוואָרט');
 tdtopleft.setAttribute("class", "dictsubtitle");
 tdtopleft.style.textAlign = "right";
 tdtopleft.style.paddingRight = "30px";
@@ -711,7 +711,7 @@ tdtopleft.appendChild(tdtopleft_inhalt);
 document.getElementById("tabelletr2").appendChild(tdtopleft);
 
 var tdtopright = document.createElement("TH");
-var tdtopright_inhalt = document.createTextNode('YIVO-transliteration');
+var tdtopright_inhalt = document.createTextNode('YIVO-transliteration / ייִוואָ־טראַנסליטעראַציע');
 tdtopright.setAttribute("class", "dictsubtitle");
 tdtopright.appendChild(tdtopright_inhalt);
 document.getElementById("tabelletr2").appendChild(tdtopright);
@@ -769,7 +769,7 @@ ordbogform.appendChild(inputtranslit3);
 
 var linktitle = document.createElement('a');
 linktitle.setAttribute("class", "linktitle");
-var linktitletext = document.createTextNode("documentation / other dictionaries");
+var linktitletext = document.createTextNode("documentation / other dictionaries – דאָקומענטאַציע / אנדערע ווערטערביכער");
 linktitle.appendChild(linktitletext);
 linktitle.title = "Get more information about this and other dictionary bookmarklets";
 linktitle.href = "https://pod-o-mart.github.io/yiddishBookmarklets";
@@ -777,7 +777,7 @@ linktitle.target = "_blank";
 ordbogform.appendChild(linktitle);
 
 var versionindicator = document.createElement('div');
-versionindicator.innerHTML = "<div style='padding: 0;color: grey;font: normal normal bold 10px verdana, sans-serif !important;float: left;white-space: nowrap;margin-top: 15px;'>Version " + version + "</div>";
+versionindicator.innerHTML = "<div style='padding: 0;color: grey;font: normal normal bold 10px verdana, sans-serif !important;float: left;white-space: nowrap;margin-top: 15px;'>Version " + version + " ווערזיע</div>";
 ordbogform.appendChild(versionindicator);
 
 var divaussen = document.createElement('div');
